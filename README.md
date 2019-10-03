@@ -1,7 +1,9 @@
 # Sistema Gestion Articulo y Almacen
 Es un sistemas para gestionar la creacion de articulos, almacen y entrada de mercacia
 
-#Articulo
+# Script de la base de datos en la carpeta Base Datos
+
+# Articulo
 En el matenimiento de articulo tenemos los campo(descripcion,idalmacen
       ,maximo
       ,minimo
@@ -17,7 +19,7 @@ En el matenimiento de articulo tenemos los campo(descripcion,idalmacen
       ,idusuariomodifico
       ,status)
      
-#Almacen
+# Almacen
 En el matenimiento de articulo tenemos los campo(nombre
 ,capacidad
 ,[comentario
