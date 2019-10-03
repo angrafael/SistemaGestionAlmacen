@@ -1,0 +1,117 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")    
+    @Styles.Render("~/Content/jquery-ui.css")
+
+    
+
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+    }
+        
+
+    header {
+        width: 100%;
+    }
+
+    .navegacion {
+        width: 1000px;
+        margin: 30px auto;
+        background: #fff;
+    }
+
+        .navegacion ul {
+            list-style: none;
+        }
+
+    .menu > li {
+        position: relative;
+        display: inline-block;
+    }
+
+        .menu > li > a {
+            display: block;
+            padding: 15px 20px;
+            color: #353535;
+            font-family: 'Open sans';
+            text-decoration: none;
+        }
+
+    .menu li a:hover {
+        color: #CE7D35;
+        transition: all .3s;
+    }
+
+    /* Submenu*/
+
+    .submenu {
+        position: absolute;
+        background: #333333;
+        width: 120%;
+        visibility: hidden;
+        opacity: 0;
+        transition: opacity 1.5s;
+    }
+
+        .submenu li a {
+            display: block;
+            padding: 15px;
+            color: #fff;
+            font-family: 'Open sans';
+            text-decoration: none;
+        }
+
+    .menu li:hover .submenu {
+        visibility: visible;
+        opacity: 1;
+    }
+</style>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("Sistema de Gestion de Almacen", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink("Almacenes", "Index", "GestionAlmacen")</li>
+
+                    <li>@Html.ActionLink("Articulos", "IndexArticulo", "GestionAlmacen")</li>
+                                         
+                    <li>  @Html.ActionLink("Inventario", "Index", "MaestrosDetalles")</li>                                                
+                                          
+                    </ul>
+
+                @Html.Partial("_LoginPartial")
+            </div>
+        </div>
+    </div>
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - Sistema de Gestion de Almacen</p>
+        </footer>
+    </div>    
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

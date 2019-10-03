@@ -1,0 +1,100 @@
+﻿@model IEnumerable<WebGestionArticulo_Almacen.Models.TableEntradas>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Entrada de Mercancia", "CrearMaestro", "MaestrosDetalles", new { @class = "btn btn-primary" })
+</p>
+<div class="container">
+    <div class="panel panel-default">
+        <div class="panel-heading">Información Entrada Mercancia</div>
+        <div class="panel-body">
+            <table class="table table-striped table-responsive  table-sm" id="ListEntrada">
+                <tr>
+                    <th>
+                      Tipo de documento
+                    </th>
+                    <th>
+                     Fecha
+                    </th>
+                    <th>
+                       Descuento
+                    </th>
+                    <th>
+                       Total
+                    </th>
+                    <th>
+                        Comentario
+                    </th>
+                    <th>
+                        Entregado Por 
+                    </th>
+                    <th>
+                       Enviado A
+                    </th>
+                    <th>
+                      Status
+                    </th>
+                    <th>
+                      Id Usuario
+                    </th>
+                    <th>Opcion</th>
+                </tr>
+
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.numeroDocumento)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.fecha)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.descuento)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.total)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.comentario)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.entregadopor)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.enviadoa)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.status)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.idusuario)
+                        </td>
+                        <td>
+
+                            @Html.ActionLink("Eliminar", "Borrar", new { IdEntra = item.identrada }, htmlAttributes: new { @class = "btn btn-danger" })
+                        </td>
+                    </tr>
+                }
+
+            </table>
+        </div>
+    </div>
+</div>
+        @section scripts{
+            <script>
+                $(document).ready(function () {
+                    $('#ListEntrada').DataTable({
+                        language: {
+                            url: '/Scripts/AjaxScripts/spanish.json'
+                        }
+                    });
+                })
+
+            </script>
+        }

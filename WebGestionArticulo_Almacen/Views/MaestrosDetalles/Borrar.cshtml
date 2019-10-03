@@ -1,0 +1,95 @@
+﻿@model WebGestionArticulo_Almacen.Models.TableEntradas
+
+@{
+    ViewBag.Title = "Borrar";
+}
+
+
+<h3>Esta seguro que Quiere realizar?</h3>
+<div>
+    <h4>Entrada de Mercacia</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.numeroDocumento)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.numeroDocumento)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.fecha)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.fecha)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.descuento)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.descuento)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.total)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.total)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.comentario)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.comentario)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.entregadopor)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.entregadopor)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.enviadoa)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.enviadoa)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.status)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.status)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.idusuario)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.idusuario)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-danger" /> |
+            @Html.ActionLink("Atras", "Index" ,"", new { @class = "btn btn-success" })
+        </div>
+    }
+</div>

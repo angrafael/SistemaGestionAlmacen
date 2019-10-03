@@ -1,0 +1,221 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="GestionArticuloModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="TableArticulo">
+    <Key>
+      <PropertyRef Name="iditem" />
+    </Key>
+    <Property Name="iditem" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="descripcion" Type="String" MaxLength="120" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="idalmacen" Type="Int32" />
+    <Property Name="maximo" Type="Decimal" Precision="9" Scale="2" />
+    <Property Name="minimo" Type="Decimal" Precision="9" Scale="2" />
+    <Property Name="existencia" Type="Decimal" Precision="13" Scale="2" />
+    <Property Name="costo" Type="Decimal" Precision="13" Scale="2" />
+    <Property Name="precio" Type="Decimal" Precision="13" Scale="2" />
+    <Property Name="preciominimo" Type="Decimal" Precision="13" Scale="2" />
+    <Property Name="itemdescuento" Type="Decimal" Precision="4" Scale="2" />
+    <Property Name="itbis" Type="Decimal" Precision="4" Scale="2" />
+    <Property Name="vencimiento" Type="DateTime" Precision="3" />
+    <Property Name="comentario" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="idusuario" Type="Int32" />
+    <Property Name="idusuariomodifico" Type="Int32" />
+    <Property Name="status" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="TableDetalleEntradas" Relationship="Self.FK_TableDetalleEntradas_TableArticulo" FromRole="TableArticulo" ToRole="TableDetalleEntradas" />
+    <NavigationProperty Name="TableDetalleSalidas" Relationship="Self.FK_TableDetalleSalidas_TableArticulo" FromRole="TableArticulo" ToRole="TableDetalleSalidas" />
+    <NavigationProperty Name="TableAlmacenes" Relationship="GestionArticuloModel.FK_TableArticulo_TableAlmacenes" FromRole="TableArticulo" ToRole="TableAlmacenes" />
+  </EntityType>
+  <EntityType Name="TableDetalleEntradas">
+    <Key>
+      <PropertyRef Name="iddetalle" />
+    </Key>
+    <Property Name="iddetalle" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="identrada" Type="Int32" Nullable="false" />
+    <Property Name="iditem" Type="Int32" />
+    <Property Name="cantidad" Type="Decimal" Precision="9" Scale="2" />
+    <Property Name="costo" Type="Decimal" Precision="13" Scale="2" />
+    <Property Name="idalmacen" Type="Int32" />
+    <Property Name="status" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
+    <Property Name="idusuario" Type="Int32" />
+    <NavigationProperty Name="TableArticulo" Relationship="Self.FK_TableDetalleEntradas_TableArticulo" FromRole="TableDetalleEntradas" ToRole="TableArticulo" />
+    <NavigationProperty Name="TableEntradas" Relationship="GestionArticuloModel.FK_TableDetalleEntradas_TableEntradas" FromRole="TableDetalleEntradas" ToRole="TableEntradas" />
+  </EntityType>
+  <EntityType Name="TableDetalleSalidas">
+    <Key>
+      <PropertyRef Name="iddetalle" />
+    </Key>
+    <Property Name="iddetalle" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="idsalida" Type="Int32" Nullable="false" />
+    <Property Name="iditem" Type="Int32" />
+    <Property Name="cantidad" Type="Decimal" Precision="9" Scale="2" />
+    <Property Name="costo" Type="Decimal" Precision="13" Scale="2" />
+    <Property Name="itemdescuento" Type="Decimal" Precision="4" Scale="2" />
+    <Property Name="idalmacen" Type="Int32" />
+    <Property Name="status" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="TableArticulo" Relationship="Self.FK_TableDetalleSalidas_TableArticulo" FromRole="TableDetalleSalidas" ToRole="TableArticulo" />
+    <NavigationProperty Name="TableSalidas" Relationship="Self.FK_TableDetalleSalidas_TableSalidas" FromRole="TableDetalleSalidas" ToRole="TableSalidas" />
+  </EntityType>
+  <EntityType Name="TableSalidas">
+    <Key>
+      <PropertyRef Name="idsalida" />
+    </Key>
+    <Property Name="idsalida" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="idalmacen" Type="Int32" />
+    <Property Name="fecha" Type="DateTime" Precision="3" />
+    <Property Name="descuento" Type="Decimal" Precision="4" Scale="2" />
+    <Property Name="total" Type="Decimal" Precision="13" Scale="2" />
+    <Property Name="comentario" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="entregadopor" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="enviadoa" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="status" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
+    <Property Name="idusuario" Type="Int32" />
+    <NavigationProperty Name="TableDetalleSalidas" Relationship="Self.FK_TableDetalleSalidas_TableSalidas" FromRole="TableSalidas" ToRole="TableDetalleSalidas" />
+  </EntityType>
+  <EntityType Name="TableUsuarios">
+    <Key>
+      <PropertyRef Name="idusuario" />
+    </Key>
+    <Property Name="idusuario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nombre" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="apellido" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="usuario" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="password" Type="String" MaxLength="160" FixedLength="false" Unicode="false" />
+    <Property Name="idrol" Type="Int32" Nullable="false" />
+    <Property Name="fechacreacion" Type="DateTime" Precision="3" />
+    <Property Name="fechaSalida" Type="DateTime" Precision="3" />
+    <Property Name="fechanacimiento" Type="DateTime" Precision="0" />
+    <Property Name="idcreador" Type="Int32" />
+    <Property Name="idusuariomodifico" Type="Int32" />
+    <Property Name="foto" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="Status" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+    <Property Name="maquinaName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="ipmaquina" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <Association Name="FK_TableDetalleEntradas_TableArticulo">
+    <End Role="TableArticulo" Type="Self.TableArticulo" Multiplicity="0..1" />
+    <End Role="TableDetalleEntradas" Type="Self.TableDetalleEntradas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TableArticulo">
+        <PropertyRef Name="iditem" />
+      </Principal>
+      <Dependent Role="TableDetalleEntradas">
+        <PropertyRef Name="iditem" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TableDetalleSalidas_TableArticulo">
+    <End Role="TableArticulo" Type="Self.TableArticulo" Multiplicity="0..1" />
+    <End Role="TableDetalleSalidas" Type="Self.TableDetalleSalidas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TableArticulo">
+        <PropertyRef Name="iditem" />
+      </Principal>
+      <Dependent Role="TableDetalleSalidas">
+        <PropertyRef Name="iditem" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TableDetalleSalidas_TableSalidas">
+    <End Role="TableSalidas" Type="Self.TableSalidas" Multiplicity="1" />
+    <End Role="TableDetalleSalidas" Type="Self.TableDetalleSalidas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TableSalidas">
+        <PropertyRef Name="idsalida" />
+      </Principal>
+      <Dependent Role="TableDetalleSalidas">
+        <PropertyRef Name="idsalida" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="GestionArticuloEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+    <EntitySet Name="TableArticulo" EntityType="Self.TableArticulo" />
+    <EntitySet Name="TableDetalleEntradas" EntityType="Self.TableDetalleEntradas" />
+    <EntitySet Name="TableDetalleSalidas" EntityType="Self.TableDetalleSalidas" />
+    <EntitySet Name="TableSalidas" EntityType="Self.TableSalidas" />
+    <EntitySet Name="TableUsuarios" EntityType="Self.TableUsuarios" />
+    <AssociationSet Name="FK_TableDetalleEntradas_TableArticulo" Association="Self.FK_TableDetalleEntradas_TableArticulo">
+      <End Role="TableArticulo" EntitySet="TableArticulo" />
+      <End Role="TableDetalleEntradas" EntitySet="TableDetalleEntradas" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TableDetalleSalidas_TableArticulo" Association="Self.FK_TableDetalleSalidas_TableArticulo">
+      <End Role="TableArticulo" EntitySet="TableArticulo" />
+      <End Role="TableDetalleSalidas" EntitySet="TableDetalleSalidas" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TableDetalleSalidas_TableSalidas" Association="Self.FK_TableDetalleSalidas_TableSalidas">
+      <End Role="TableSalidas" EntitySet="TableSalidas" />
+      <End Role="TableDetalleSalidas" EntitySet="TableDetalleSalidas" />
+    </AssociationSet>
+    <EntitySet Name="TableAlmacenes" EntityType="GestionArticuloModel.TableAlmacenes" />
+    <AssociationSet Name="FK_TableArticulo_TableAlmacenes" Association="GestionArticuloModel.FK_TableArticulo_TableAlmacenes">
+      <End Role="TableAlmacenes" EntitySet="TableAlmacenes" />
+      <End Role="TableArticulo" EntitySet="TableArticulo" />
+    </AssociationSet>
+    <EntitySet Name="TableEntradas" EntityType="GestionArticuloModel.TableEntradas" />
+    <AssociationSet Name="FK_TableDetalleEntradas_TableEntradas" Association="GestionArticuloModel.FK_TableDetalleEntradas_TableEntradas">
+      <End Role="TableEntradas" EntitySet="TableEntradas" />
+      <End Role="TableDetalleEntradas" EntitySet="TableDetalleEntradas" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="TableAlmacenes">
+    <Key>
+      <PropertyRef Name="idalmacen" />
+    </Key>
+    <Property Name="idalmacen" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="capacidad" Type="Int32" />
+    <Property Name="comentario" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="status" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
+    <Property Name="idusuario" Type="Int32" />
+    <NavigationProperty Name="TableArticulo" Relationship="GestionArticuloModel.FK_TableArticulo_TableAlmacenes" FromRole="TableAlmacenes" ToRole="TableArticulo" />
+  </EntityType>
+  <Association Name="FK_TableArticulo_TableAlmacenes">
+    <End Type="GestionArticuloModel.TableAlmacenes" Role="TableAlmacenes" Multiplicity="0..1" />
+    <End Type="GestionArticuloModel.TableArticulo" Role="TableArticulo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TableAlmacenes">
+        <PropertyRef Name="idalmacen" />
+      </Principal>
+      <Dependent Role="TableArticulo">
+        <PropertyRef Name="idalmacen" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="TableEntradas">
+    <Key>
+      <PropertyRef Name="identrada" />
+    </Key>
+    <Property Name="identrada" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="numeroDocumento" Type="Int32" />
+    <Property Name="fecha" Type="DateTime" Precision="3" />
+    <Property Name="descuento" Type="Decimal" Precision="4" Scale="2" />
+    <Property Name="total" Type="Decimal" Precision="12" Scale="2" />
+    <Property Name="comentario" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="entregadopor" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="enviadoa" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="status" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
+    <Property Name="idusuario" Type="Int32" />
+    <NavigationProperty Name="TableDetalleEntradas" Relationship="GestionArticuloModel.FK_TableDetalleEntradas_TableEntradas" FromRole="TableEntradas" ToRole="TableDetalleEntradas" />
+  </EntityType>
+  <Association Name="FK_TableDetalleEntradas_TableEntradas">
+    <End Type="GestionArticuloModel.TableEntradas" Role="TableEntradas" Multiplicity="1" />
+    <End Type="GestionArticuloModel.TableDetalleEntradas" Role="TableDetalleEntradas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TableEntradas">
+        <PropertyRef Name="identrada" />
+      </Principal>
+      <Dependent Role="TableDetalleEntradas">
+        <PropertyRef Name="identrada" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

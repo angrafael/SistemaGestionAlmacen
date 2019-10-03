@@ -1,0 +1,152 @@
+﻿@model WebGestionArticulo_Almacen.Models.TableArticulo
+
+@{
+    ViewBag.Title = "Borrar Articulo";
+}
+
+
+<hr />
+<div class="card border-dark mb-3">
+    <div class="card-header"><center><h3 class="text-danger">¿Está usted seguro que desea eliminar este registro?</h3></center></div>
+    <div class="card-body text-dark">
+
+        <div class="input-group">
+            <div>
+               
+                <hr />
+                <dl class="dl-horizontal">
+                    <dt>
+                        @Html.DisplayNameFor(model => model.descripcion)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.descripcion)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.maximo)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.maximo)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.minimo)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.minimo)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.existencia)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.existencia)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.costo)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.costo)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.precio)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.precio)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.preciominimo)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.preciominimo)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.itemdescuento)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.itemdescuento)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.itbis)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.itbis)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.vencimiento)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.vencimiento)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.comentario)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.comentario)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.idusuario)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.idusuario)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.idusuariomodifico)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.idusuariomodifico)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.status)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.status)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.TableAlmacenes.nombre)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.TableAlmacenes.nombre)
+                    </dd>
+
+                </dl>
+            </div>
+        </div>
+    </div>
+</div>
+@using (Html.BeginForm())
+{
+     <div class="input-group">
+        <div class="col-md-12">
+            @Html.ActionLink("Regresar", "IndexArticulo", "", new { @class = "btn btn-info " })
+            <input type="submit" value="Eliminar" class="btn btn-danger pull-right" />
+        </div>
+    </div>
+}
+

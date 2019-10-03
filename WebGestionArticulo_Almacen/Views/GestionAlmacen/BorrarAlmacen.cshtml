@@ -1,0 +1,70 @@
+﻿@model WebGestionArticulo_Almacen.Models.TableAlmacenes
+@{
+    ViewBag.Title = "Eliminar Almacen";
+}
+
+<h2>Eliminar Almacen</h2>
+
+<form action="/GestionAlmacen/BorrarAlmacen" method="post">
+    <hr />
+    <div class="card border-dark mb-3">
+
+        <div class="card-body text-dark">
+
+            <div class="form-horizontal">
+
+                <div class="form-group">
+                    <div class="col-md-12">
+                        <label>ID Almacen</label> <br />
+
+                        @Html.EditorFor(model => model.idalmacen, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-12">
+                        <label>Nombre</label> <br />
+                        @Html.EditorFor(model => model.nombre, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                        @* <input type="text" id="nombre" name="nombre" />*@
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-12">
+                        <label>Tamaño</label> <br />
+                        @Html.EditorFor(model => model.capacidad, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                        @*<input type="text" id="tamano" name="tamano" />*@
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-10">
+                        <label>Comentario</label> <br />
+                        @*<textarea rows="4" cols="50" name="comentario" id="comentario"></textarea>*@
+                        @Html.EditorFor(model => model.comentario, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-12">
+                        <label>Estado</label> <br />
+                        <select id="status" name="status" size="1">
+                            <OPTION VALUE="Activo">Activo</OPTION>
+                            <OPTION VALUE="Inactivo">Inactivo</OPTION>
+                        </select>
+
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-2">
+                        @Html.ActionLink("Regresar", "Index", "", new { @class = "btn btn-info " })
+                        <input id="btnGuard" type="submit" value="Guardar" class="btn btn-success pull-right" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+
+
+

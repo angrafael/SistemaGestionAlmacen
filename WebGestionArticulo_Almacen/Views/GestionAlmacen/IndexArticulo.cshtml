@@ -1,0 +1,143 @@
+﻿@model IEnumerable<WebGestionArticulo_Almacen.Models.TableArticulo>
+
+
+@{
+    ViewBag.Title = "Index Articulo";
+}
+
+<h2>Lista de Articulo</h2>
+
+    <p>
+        @Html.ActionLink("Agregar", "AgregarArticulo", "GestionAlmacenController", new { @class = "btn btn-primary" })
+
+    </p>
+    <div class="panel panel-default">
+        <div class="panel-heading">Información Articulos</div>
+        <div class="panel-body">
+            <div class="container">
+                <table class="table table-striped table-responsive  table-sm" id="ListArticulo">
+                    <thead>
+                        <tr>
+                            <th>
+                                <label>Codigo</label>
+                            </th>
+                            <th>
+                                <label>Descripcion</label>
+                            </th>
+                            <th>
+                                <label>Almacen</label>
+                            </th>
+                            <th>
+                                <label>Maximo</label>
+                            </th>
+                            <th>
+                                <label>Minimo</label>
+                            </th>
+                            <th>
+                                <label>Existencia</label>
+                            </th>
+                            <th>
+                                <label>Costo</label>
+                            </th>
+                            <th>
+                                <label>Precio</label>
+                            </th>
+                            <th>
+                                <label>Precio minimo</label>
+                            </th>
+                            <th>
+                                <label>Descuento</label>
+                            </th>
+                            <th>
+                                <label>Itbis</label>
+                            </th>
+                            <th>
+                                <label>Fecha Vencimiento</label>
+                            </th>
+                            <th>
+                                <label>Comentario</label>
+                            </th>
+                            <th>
+                                <label>Estatus</label>
+                            </th>
+                            <th>Opciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+            {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.iditem)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.descripcion)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.idalmacen)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.maximo)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.minimo)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.existencia)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.costo)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.precio)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.preciominimo)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.itemdescuento)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.itbis)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.vencimiento)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.comentario)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.status)
+                                </td>
+                                <td>
+
+                                    @*@Html.ActionLink("Modificar", "modificarAlmacen", "GestionAlmacenController", new {IdAlmacen = item.idalmacen }, htmlAttributes: new { @class = "btn btn-primary" }) |*@
+                                    @Html.ActionLink("Modificar", "modificarArticulo", new { iditem = item.iditem }, htmlAttributes: new { @class = "btn btn-success" }) |
+                                    @Html.ActionLink("Eliminar", "BorrarArticulo", new { iditem = item.iditem }, htmlAttributes: new { @class = "btn btn-danger" })
+
+
+                                </td>
+                            </tr>
+
+                        }
+                    </tbody>
+                </table>
+            </div>
+    </div>
+</div>
+
+ 
+        @section scripts{
+            <script>
+                $(document).ready(function () {
+                    $('#ListArticulo').DataTable({
+                        language: {
+                            url: '/Scripts/AjaxScripts/spanish.json'
+                        }
+                    });
+                })
+
+            </script>
+        }
+
+

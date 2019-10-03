@@ -1,0 +1,195 @@
+﻿@model WebGestionArticulo_Almacen.Models.TableEntradas
+
+@{
+    ViewBag.Title = "Entrada Mercancia";
+}
+
+<style>
+    .izquierdo {
+        float: left;
+        width: 150px;
+        margin-right: 10px;
+    }
+
+    .clear {
+        clear: both;
+    }
+</style>
+<h2>Entrada de Mercancias</h2>
+<form action="/MaestrosDetalles/CrearMaestro" method="post">
+    <div class="container">
+        <div class="panel panel-default">
+            <div class="panel-heading">Información Entrada Mercancia</div>
+            <div class="panel-body">
+                <div class="card border-dark bg-dark">
+
+                    <div class="card-body text-dark">
+
+                        <div class="form-group">
+                            <div class="izquierdo">
+                                <label>Tipo Entrada</label> <br />
+                                @Html.DropDownList("numeroDocumento", ViewData["numeroDocumento"] as SelectList, new { @numeroDocumento = "numeroDocumento", @class = "form-control", required = "true" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="izquierdo">
+                                <label>Descuento</label> <br />
+                              
+                                @Html.EditorFor(model => model.descuento, new { htmlAttributes = new { @class = "form-control" } })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="izquierdo" ">
+                                <label>Total</label> <br />
+                                <input id="total" name="total" type="text" style="width:150px" class="form-control" required readonly>
+                              
+
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="izquierdo">
+                                <label>Fecha</label> <br />
+                                <input type="date" name="fecha" id="fecha" class="form-control" value="fecha" required />
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="izquierdo">
+                                <label>Enviado A</label> <br />
+                                <input id="enviadoa" name="enviadoa" type="text" style="width:150px">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="izquierdo">
+                                <label>Entregado Por</label> <br />
+                                <input id="entregadopor" name="entregadopor" type="text" style="width:150px"> <br />
+
+                            </div>
+                        </div>
+
+                        <div class="clear">
+                        </div>
+                        <div class="form-group">
+                            <div class="izquierdo">
+                                <label>Comentario</label> <br />
+                                <textarea cols="20" htmlattributes="{ class = form-control }" id="comentario" name="comentario" rows="2" style="margin: 0px; width: 305px; height: 68px;"></textarea>
+                            </div>
+                        </div>
+                        <div class="clear">
+                        </div>
+                        <div class="clear">
+                        </div>
+                        <div class="card">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">Detalle de Entrada</div>
+                                <div class="panel-body">
+                                    <div class="form-group">
+                                        <div class="izquierdo">
+                                            <label>Articulos:</label> <br />
+                                            @Html.DropDownList("iditem", ViewData["articulos"] as SelectList, new { @iditem = "iditem", @class = "form-control", })
+                                        </div>
+
+
+                                        <div class="izquierdo">
+                                            <label>Almacen</label> <br />
+                                            @Html.DropDownList("idalmacen", ViewData["almacenes"] as SelectList, new { @idalmacen = "nombre", @class = "form-control" })
+
+                                        </div>
+
+                                        <div class="izquierdo">
+                                            <label> Cantidad:</label> <br />
+                                            <input id="cantidad" type="text" style="width:150px">
+                                        </div>
+                                        <div class="izquierdo">
+                                            <label>Costo:</label> <br />
+                                            <input id="costo" type="text" style="width:150px">
+                                        </div>
+                                    </div>
+                                    <p>
+                                        <button id="Agregar" class="btn btn-primary" onclick="guardar()">Agregar</button>
+                                        
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="clear">
+                        </div>
+                    </div>
+                </div>
+
+                <table class="table" id="idTable">
+                    <thead>
+                        <tr>
+                            <th>Codigo</th>
+                            <th>Descripcion</th>
+                            <th>Almacen</th>
+                            <th>Cantidad</th>
+                            <th>Costo</th>
+                            <th>Total</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tablita"></tbody>
+                </table>
+
+           </div>
+        </div>
+    </div>
+ </div>
+    <div class="form-group">
+        @*<div class="col-md-offset-2 col-md-2">*@
+        @Html.ActionLink("Regresar", "Index", "", new { @class = "btn btn-success" })        
+        @Html.ActionLink("Guardar", "CrearMaestro", "MaestrosDetalles", new { @class = "btn btn-info " })
+        </div>
+    </form>
+
+
+
+
+    <script>
+
+
+               function guardar() {
+
+
+            var _selected = document.getElementById("iditem");
+            var _Descripcion = _selected.options[_selected.selectedIndex].text;
+            //innerText.replace("-- Seleccione --", "");
+            var _iditem = document.getElementById("iditem").value;
+            var _idalmacen = document.getElementById("idalmacen").value;
+            var _cantidad = document.getElementById("cantidad").value;
+            var _costo = document.getElementById("costo").value;
+            var _importe = _cantidad * _costo
+
+            var fila = "</td><td>" + _iditem + "<tr><td>" + _Descripcion + "</td><td>" + _idalmacen + "</td><td>" + _cantidad + "</td><td>" + _costo + "</td><td>" + _importe + "</td></tr>";
+
+            var btn = document.createElement("TR");
+            btn.innerHTML = fila;
+            document.getElementById("tablita").appendChild(btn);
+            btn++;
+            limpiar();
+
+            $(document).ready(function () {
+
+                var total_col1 = 0;
+
+                $('#idTable tbody').find('tr').each(function (i, el) {
+                    total_col1 += parseFloat($(this).find('td').eq(5).text());
+
+                });
+                document.getElementById("total").value = total_col1;
+               ;
+
+            });
+        };
+
+        function limpiar() {
+            document.getElementById("cantidad").value = "";
+            document.getElementById("costo").value = "";
+            document.getElementById("iditem").value = "-- Seleccione -- ";
+            document.getElementById("idalmacen").value = "-- Seleccione -- ";
+        }
+
+    </script>

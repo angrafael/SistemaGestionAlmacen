@@ -1,0 +1,131 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="GestionArticuloModelStoreContainer" CdmEntityContainer="GestionArticuloEntities">
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="GestionArticuloModel.sysdiagrams">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TableArticulo">
+      <EntityTypeMapping TypeName="GestionArticuloModel.TableArticulo">
+        <MappingFragment StoreEntitySet="TableArticulo">
+          <ScalarProperty Name="iditem" ColumnName="iditem" />
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+          <ScalarProperty Name="idalmacen" ColumnName="idalmacen" />
+          <ScalarProperty Name="maximo" ColumnName="maximo" />
+          <ScalarProperty Name="minimo" ColumnName="minimo" />
+          <ScalarProperty Name="existencia" ColumnName="existencia" />
+          <ScalarProperty Name="costo" ColumnName="costo" />
+          <ScalarProperty Name="precio" ColumnName="precio" />
+          <ScalarProperty Name="preciominimo" ColumnName="preciominimo" />
+          <ScalarProperty Name="itemdescuento" ColumnName="itemdescuento" />
+          <ScalarProperty Name="itbis" ColumnName="itbis" />
+          <ScalarProperty Name="vencimiento" ColumnName="vencimiento" />
+          <ScalarProperty Name="comentario" ColumnName="comentario" />
+          <ScalarProperty Name="idusuario" ColumnName="idusuario" />
+          <ScalarProperty Name="idusuariomodifico" ColumnName="idusuariomodifico" />
+          <ScalarProperty Name="status" ColumnName="status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TableDetalleEntradas">
+      <EntityTypeMapping TypeName="GestionArticuloModel.TableDetalleEntradas">
+        <MappingFragment StoreEntitySet="TableDetalleEntradas">
+          <ScalarProperty Name="iddetalle" ColumnName="iddetalle" />
+          <ScalarProperty Name="identrada" ColumnName="identrada" />
+          <ScalarProperty Name="iditem" ColumnName="iditem" />
+          <ScalarProperty Name="cantidad" ColumnName="cantidad" />
+          <ScalarProperty Name="costo" ColumnName="costo" />
+          <ScalarProperty Name="idalmacen" ColumnName="idalmacen" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="idusuario" ColumnName="idusuario" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TableDetalleSalidas">
+      <EntityTypeMapping TypeName="GestionArticuloModel.TableDetalleSalidas">
+        <MappingFragment StoreEntitySet="TableDetalleSalidas">
+          <ScalarProperty Name="iddetalle" ColumnName="iddetalle" />
+          <ScalarProperty Name="idsalida" ColumnName="idsalida" />
+          <ScalarProperty Name="iditem" ColumnName="iditem" />
+          <ScalarProperty Name="cantidad" ColumnName="cantidad" />
+          <ScalarProperty Name="costo" ColumnName="costo" />
+          <ScalarProperty Name="itemdescuento" ColumnName="itemdescuento" />
+          <ScalarProperty Name="idalmacen" ColumnName="idalmacen" />
+          <ScalarProperty Name="status" ColumnName="status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TableSalidas">
+      <EntityTypeMapping TypeName="GestionArticuloModel.TableSalidas">
+        <MappingFragment StoreEntitySet="TableSalidas">
+          <ScalarProperty Name="idsalida" ColumnName="idsalida" />
+          <ScalarProperty Name="idalmacen" ColumnName="idalmacen" />
+          <ScalarProperty Name="fecha" ColumnName="fecha" />
+          <ScalarProperty Name="descuento" ColumnName="descuento" />
+          <ScalarProperty Name="total" ColumnName="total" />
+          <ScalarProperty Name="comentario" ColumnName="comentario" />
+          <ScalarProperty Name="entregadopor" ColumnName="entregadopor" />
+          <ScalarProperty Name="enviadoa" ColumnName="enviadoa" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="idusuario" ColumnName="idusuario" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TableUsuarios">
+      <EntityTypeMapping TypeName="GestionArticuloModel.TableUsuarios">
+        <MappingFragment StoreEntitySet="TableUsuarios">
+          <ScalarProperty Name="idusuario" ColumnName="idusuario" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="apellido" ColumnName="apellido" />
+          <ScalarProperty Name="usuario" ColumnName="usuario" />
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="idrol" ColumnName="idrol" />
+          <ScalarProperty Name="fechacreacion" ColumnName="fechacreacion" />
+          <ScalarProperty Name="fechaSalida" ColumnName="fechaSalida" />
+          <ScalarProperty Name="fechanacimiento" ColumnName="fechanacimiento" />
+          <ScalarProperty Name="idcreador" ColumnName="idcreador" />
+          <ScalarProperty Name="idusuariomodifico" ColumnName="idusuariomodifico" />
+          <ScalarProperty Name="foto" ColumnName="foto" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="maquinaName" ColumnName="maquinaName" />
+          <ScalarProperty Name="ipmaquina" ColumnName="ipmaquina" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TableAlmacenes">
+      <EntityTypeMapping TypeName="GestionArticuloModel.TableAlmacenes">
+        <MappingFragment StoreEntitySet="TableAlmacenes">
+          <ScalarProperty Name="idusuario" ColumnName="idusuario" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="comentario" ColumnName="comentario" />
+          <ScalarProperty Name="capacidad" ColumnName="capacidad" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="idalmacen" ColumnName="idalmacen" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TableEntradas">
+      <EntityTypeMapping TypeName="GestionArticuloModel.TableEntradas">
+        <MappingFragment StoreEntitySet="TableEntradas">
+          <ScalarProperty Name="idusuario" ColumnName="idusuario" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="enviadoa" ColumnName="enviadoa" />
+          <ScalarProperty Name="entregadopor" ColumnName="entregadopor" />
+          <ScalarProperty Name="comentario" ColumnName="comentario" />
+          <ScalarProperty Name="total" ColumnName="total" />
+          <ScalarProperty Name="descuento" ColumnName="descuento" />
+          <ScalarProperty Name="fecha" ColumnName="fecha" />
+          <ScalarProperty Name="numeroDocumento" ColumnName="numeroDocumento" />
+          <ScalarProperty Name="identrada" ColumnName="identrada" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
